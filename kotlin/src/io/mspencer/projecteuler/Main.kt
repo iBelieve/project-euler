@@ -6,20 +6,22 @@ import kotlin.properties.Delegates.notNull
 import kotlin.reflect.full.findAnnotation
 import kotlin.system.measureTimeMillis
 
-val problems = listOf(::euler1, ::euler2, ::euler3, ::euler4, ::euler5)
+val problems = listOf(::euler1, ::euler2, ::euler3, ::euler4, ::euler5, ::euler6, ::euler7)
 
 fun main(args: Array<String>) {
-    val problemNumber = args.firstOrNull()?.toInt() ?: problems.size
-    val problem = problems[problemNumber - 1]
+    problems.forEachIndexed { index, problem ->
+        val problemNumber = index + 1
+        val annotation = problem.findAnnotation<ProjectEuler>()!!
 
-    val annotation = problem.findAnnotation<ProjectEuler>()
+        var result by notNull<String>()
+        val time = measureTimeMillis {
+            result = problem.invoke().toString()
+        }
 
-    require(annotation != null) { "Missing @ProjectEuler annotation on problem $problemNumber" }
-
-    var result by notNull<String>()
-    val time = measureTimeMillis {
-        result = problem.invoke().toString()
+        if (annotation.answer.isNotEmpty() && annotation.answer != result) {
+            println("$problemNumber: ${annotation.description}: $result !+ ${annotation.answer} ($time ms)")
+        } else {
+            println("$problemNumber: ${annotation.description}: $result ($time ms)")
+        }
     }
-
-    println("${annotation!!.description}: $result ($time ms)")
 }

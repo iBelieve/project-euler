@@ -11,7 +11,7 @@ fun fibonacci() = kotlin.coroutines.experimental.buildSequence {
     }
 }
 
-@ProjectEuler("Sum of even Fibonacci numbers up to four million")
+@ProjectEuler("Sum of even Fibonacci numbers up to four million", "4613732")
 fun euler2() = fibonacci()
         .takeWhile { it <= FOUR_MILLION }
         .filter { it.isEven() }

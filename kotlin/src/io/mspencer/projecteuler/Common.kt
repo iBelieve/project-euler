@@ -8,4 +8,4 @@ fun Int.sqrt() = Math.ceil(Math.sqrt(toDouble())).toInt()
 fun Long.sqrt() = Math.ceil(Math.sqrt(toDouble())).toLong()
 
 @Target(AnnotationTarget.FUNCTION)
-annotation class ProjectEuler(val description: String)
+annotation class ProjectEuler(val description: String, val answer: String = "")

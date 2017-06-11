@@ -6,7 +6,7 @@ operator fun IntProgression.times(other: IntProgression) = this.flatMap { other 
 fun String.isPalindrome() = this == reversed()
 fun Int.isPalindrome() = toString().isPalindrome()
 
-@ProjectEuler("Largest palindrome from two three-digit numbers")
+@ProjectEuler("Largest palindrome from two three-digit numbers", "906609")
 fun euler4() = ((1000 downTo 100) * (1000 downTo 100))
         .filter { it.isPalindrome() }
         .max()

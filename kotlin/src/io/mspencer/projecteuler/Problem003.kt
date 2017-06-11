@@ -50,5 +50,5 @@ fun primeFactors(number: Long) = primeNumbers()
         .takeWhile { it <= number.sqrt() }
         .filter { number % it.toLong() == 0L }
 
-@ProjectEuler("Largest prime factor of 600851475143")
+@ProjectEuler("Largest prime factor of 600851475143", "6857")
 fun euler3() = primeFactors(600851475143).max()
