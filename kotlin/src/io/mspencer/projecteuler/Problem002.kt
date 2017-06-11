@@ -1,11 +1,8 @@
-#!/usr/bin/env kscript
-import kotlin.coroutines.experimental.buildSequence
+package io.mspencer.projecteuler
 
 val FOUR_MILLION = 4000000
 
-fun Int.isEven() = this % 2 == 0
-
-fun fibonacci() = buildSequence {
+fun fibonacci() = kotlin.coroutines.experimental.buildSequence {
     var terms = Pair(1, 2)
 
     while (true) {
@@ -14,7 +11,8 @@ fun fibonacci() = buildSequence {
     }
 }
 
-println("Sum of even Fibonacci numbers up to four million: " + fibonacci()
+@ProjectEuler("Sum of even Fibonacci numbers up to four million")
+fun euler2() = fibonacci()
         .takeWhile { it <= FOUR_MILLION }
         .filter { it.isEven() }
-        .sum())
+        .sum()
