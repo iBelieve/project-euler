@@ -32,7 +32,7 @@ fun smallestNumberDivisibleBy(numbers: IntArray): Int {
     return factors.map { it.key.pow(it.value) }.reduce { a, b -> a * b }
 }
 
-fun smallestNumberDivisibleBy(range: IntRange) = io.mspencer.projecteuler.smallestNumberDivisibleBy(range.toList().toIntArray())
+fun smallestNumberDivisibleBy(range: IntRange) = smallestNumberDivisibleBy(range.toList().toIntArray())
 
-@ProjectEuler("Smallest number divisible by 1 through 20", "232792560")
+@SolvedProblem("Smallest number divisible by 1 through 20", "232792560")
 fun euler5() = smallestNumberDivisibleBy(1..20)

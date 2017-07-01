@@ -1,6 +1,6 @@
 package io.mspencer.projecteuler
 
-val input = """
+val thousandDigitNumber = """
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
@@ -26,7 +26,7 @@ val input = """
 fun substrings(input: String, length: Int) = (0..input.lastIndex - length - 1)
         .map { input.substring(it, it + length) }
 
-@ProjectEuler("Thirteen adjacent digits in the 1000-digit number that have the greatest product", "23514624000")
-fun euler8() = substrings(input, 13)
+@SolvedProblem("Thirteen adjacent digits in the 1000-digit number that have the greatest product", "23514624000")
+fun euler8() = substrings(thousandDigitNumber, 13)
         .map { it.map { it.toString().toLong() }.reduce { a, b -> a * b } }
         .max()
